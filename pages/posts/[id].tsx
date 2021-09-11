@@ -3,6 +3,7 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { Heading } from "@chakra-ui/react";
 
 export default function Post({
   postData
@@ -19,10 +20,11 @@ export default function Post({
         <title>{postData.title}</title>
       </Head>
       <article>
-        <h1>{postData.title}</h1>
+        <Heading as = "h1">{postData.title}</Heading>
         <div>
           <Date dateString={postData.date} />
         </div>
+        <br />
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>

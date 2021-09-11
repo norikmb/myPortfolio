@@ -1,11 +1,9 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
+import Layout from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { AttachmentIcon, InfoIcon, MoonIcon } from '@chakra-ui/icons'
+import { Stack, Heading, Text, List, ListItem , Link , HStack, VStack} from "@chakra-ui/react";
 
 const Home = ({
   allPostsData
@@ -19,33 +17,34 @@ const Home = ({
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>home</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-      <h2 className={utilStyles.headingLg}>About</h2>
-        <p>Computer Science Course, Advanced Engineering Course, NITTC</p>
-        <p>
-          <MoonIcon />
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Works</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Stack spacing={8}>
+        <Stack bg="gray.700" color="white" w={900} mr="auto" ml="auto" pb={4}>
+          <Heading as="h2" p={4}>About</Heading>
+          <Stack>
+            <Text pl={4}>所属：豊田工業高等専門学校 情報科学専攻 2年</Text>
+            <Text pl={4}>趣味：旅行、キャンプ、TCG、読書</Text>
+            <Text pl={4}>興味：音楽、恐竜、プログラミング、経済</Text>
+          </Stack>
+        </Stack>
+      
+        <Stack bg="gray.700" color="white" w={900} mr="auto" ml="auto" pb={4}>
+          <Heading as="h2" p={4}>Works</Heading>  
+            <List pl={4} spacing={8}>
+              {allPostsData.map(({ id, date, title }) => (
+                <ListItem key={id}>
+                  <Link color="teal.500" href={`/posts/${id}`}>
+                    <Text>{title}</Text>
+                  </Link>
+                  <Text as="sub" color="gray.500">
+                    <Date dateString={date} />
+                  </Text>
+                </ListItem>
+              ))}
+            </List>
+        </Stack>
+      </Stack>
     </Layout>
   )
 }

@@ -1,11 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import { Link ,Image, Text, HStack, VStack, Box, Center } from "@chakra-ui/react";
 
 const name = 'Kambe Norihito'
-export const siteTitle = 'N.K Portfolio'
+export const siteTitle = 'home'
 
 export default function Layout({
   children,
@@ -15,54 +12,60 @@ export default function Layout({
   home?: boolean
 }) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="This is a portfolio site of Norihito Kobe using Nextjs and chakura UI."
         />
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={200}
-              width={200}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h1 className={utilStyles.headingLg}>
+        <Center h="100%" p={10}>
+          {home ? (
+            <>
+            <VStack>
+              <Image
+                borderRadius="full"
+                boxSize="200px"
+                src="/images/profile.jpg"
+                alt={name}
+              />
+              <HStack >
+                <Text as="cite" fontSize="5xl">{name}</Text>
+                <Link href="https://www.facebook.com/profile.php?id=100012667274761" isExternal>
+                  <Image
+                    boxSize="36px"
+                    src="/images/f_logo_RGB-Black_58.png"
+                    alt="facebook"
+                    />
+                </Link>
+              </HStack>
+            </VStack>
+            </>
+          ) : (
+            <>
+            <VStack>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                  <Image
+                    borderRadius="full"
+                    boxSize="100px"
+                    src="/images/profile.jpg"
+                    alt={name}
+                  />
               </Link>
-            </h1>
-          </>
-        )}
-      </header>
+                <Link href="/">
+                  <Text as="cite" fontSize="3xl">{name}</Text>
+                </Link>
+            </VStack>
+            </>
+          )}
+        </Center>
       <main>{children}</main>
+ 
       {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
+        <div>
+          <Link color="teal.500" href="/">
+            <Text fontSize="2xl" pb={10}>← Back to home</Text>
           </Link>
         </div>
       )}
