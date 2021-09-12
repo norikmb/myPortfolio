@@ -17,7 +17,7 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="This is a portfolio site of Norihito Kobe using Nextjs and chakura UI."
+          content="This is a portfolio site of Norihito Kambe using Nextjs and chakura UI."
         />
       </Head>
         <Center h="100%" p={10}>
