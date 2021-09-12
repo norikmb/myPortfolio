@@ -26,12 +26,12 @@ export default function Layout({
             <VStack>
               <Image
                 borderRadius="full"
-                boxSize="200px"
+                boxSize={{ base: "150px", md: "200px" }}
                 src="/images/profile.jpg"
                 alt={name}
               />
               <HStack >
-                <Text as="cite" fontSize="5xl">{name}</Text>
+                <Text as="cite" fontSize={{ base: "2xl", md: "5xl" }}>{name}</Text>
                 <Link href="https://www.facebook.com/profile.php?id=100012667274761" isExternal>
                   <Image
                     boxSize="36px"
@@ -63,12 +63,15 @@ export default function Layout({
       <main>{children}</main>
  
       {!home && (
-        <div>
+        <Box py="12">
           <Link color="teal.500" href="/">
             <Text fontSize="2xl" pb={10}>← Back to home</Text>
           </Link>
-        </div>
+        </Box>
       )}
+
+      <Box as="footer" role="contentinfo" py="12" px={{ base: '4', md: '8' }}/>
+      
     </div>
   )
 }
