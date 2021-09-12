@@ -5,7 +5,6 @@ import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { Heading, Text, Divider, Stack, Tag, HStack } from "@chakra-ui/react";
 
-const tagname= "日記";
 export default function Post({
   postData
 }: {
